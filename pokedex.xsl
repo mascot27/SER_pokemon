@@ -82,9 +82,9 @@
 									<xsl:value-of select="." />
 								</xsl:attribute>
 
-								<!-- ##### A compléter 4 (ok): Ici, vous devez faire appel au template lister_pokemon en lui passant le bon filtre en paramètre -->
+								<!-- ##### A compléter 4 (DONE) : Ici, vous devez faire appel au template lister_pokemon en lui passant le bon filtre en paramètre -->
 								<xsl:call-template name="lister_pokemon">
-									<xsl:with-param name="filtre" select="//pokedex/" />
+									<xsl:with-param name="filtre" select="//pokedex/pokemon/type[text() = $type]/parent::pokemon"/>
 								</xsl:call-template>
 
 							</div>
@@ -143,17 +143,16 @@
 
 			<xsl:attribute name="generation">
 
-				<!-- ##### A compléter 10 (le plus proprement possible) étant donné les contraintes suivantes : -->
-
-				<!-- generation = "1" si l'id du pokemon est plus petit ou égal à 151 -->
-				<!-- generation = "2" si l'id du pokemon est plus petit ou égal à 251 et plus grand que 151 -->
-				<!-- generation = "3" si l'id du pokemon est plus petit ou égal à 386 et plus grand que 251 -->
-				<!-- generation = "4" si l'id du pokemon est plus petit ou égal à 493 et plus grand que 386 -->
-				<!-- generation = "5" si l'id du pokemon est plus petit ou égal à 649 et plus grand que 493 -->
-				<!-- generation = "6" si l'id du pokemon est plus petit ou égal à 721 et plus grand que 649.-->
-				<!-- generation = "7" si l'id du pokemon est plus petit ou égal à 809 et plus grand que 721-->
-
-				<xsl:value-of select="1" /><!-- Pour l'instant tous les pokémosn sont de la génération 1, pour que vous ne soyez pas bloqué sur le reste -->
+				<!-- ##### A compléter 10 (DONE) (le plus proprement possible) étant donné les contraintes suivantes : -->
+				<xsl:choose>
+					<xsl:when test="id &lt; 152">1</xsl:when>
+					<xsl:when test="id &lt; 252">2</xsl:when>
+					<xsl:when test="id &lt; 387">3</xsl:when>
+					<xsl:when test="id &lt; 494">4</xsl:when>
+					<xsl:when test="id &lt; 650">5</xsl:when>
+					<xsl:when test="id &lt; 722">6</xsl:when>
+					<xsl:when test="id &lt; 810">7</xsl:when>
+				</xsl:choose>
 
 				<!-- Fin A compléter 10 -->
 
