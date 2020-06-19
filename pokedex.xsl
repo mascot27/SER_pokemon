@@ -190,16 +190,21 @@
 
 	<xsl:template match="id">
 
-		<img width="100%"
+		<img width="100%">
 
-			<xls:value-of></xls:value-of> <!-- ##### A compléter 8 : Ici, vous devez étudier le dossier images et vous trouverez facilement l'objectif de ce que vous devez faire ici. Indice : Vous devez utiliser une ou plusieurs 	               fonctions de  XSLT-->
+	<xsl:attribute name="src">
+        images/<xsl:value-of select="." />.png
+    </xsl:attribute>
+
+		<!-- ##### A compléter 8 (done): Ici, vous devez étudier le dossier images et vous trouverez facilement l'objectif de ce que vous devez faire ici. Indice : Vous devez utiliser une ou plusieurs 	               fonctions de  XSLT-->
 
 				<!-- NB : La sources d'images utilisées provient de :  https://github.com/fanzeyi/pokemon.json    -->
 		</img>
 
 	</xsl:template>
 
-	<> <!-- ##### A compléter 9 -->
+	
+		<xsl:template match="base"><!-- ##### A compléter 9 (done)-->
 
 		<table class="table table-stripped">
 			
@@ -226,6 +231,6 @@
 
 		</table>
 
-	<> <!-- Fin à compléter 9 -->
+	<xsl:template> <!-- Fin à compléter 9 -->
 
 </xsl:stylesheet>
